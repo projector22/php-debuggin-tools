@@ -1,6 +1,6 @@
 # PHP DEBUGGIN TOOLS - CHANGELOG
 
-## Version 1.0.0 - UNRELEASED
+## Version 1.0.0 - 2022-04-26
 
 ### Added
 
