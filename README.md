@@ -25,3 +25,63 @@ function autoload( string $class ) {
     }
 }
 ```
+
+## Tools
+
+### Display
+
+Usage is as follows:
+
+```php
+Debug::$display->data( 'Example Data' );
+Debug::$display->table( ['a' => 'b', 'c' => 'd'] );
+Debug::$display->page_data();
+```
+
+### Timing
+
+Usage is as follows:
+
+```php
+Debug::$timer->start();
+// Some code
+Debug::$timer->timestamp( 'label' );
+// Some code
+Debug::$timer->timestamp( 'another label' );
+// Some code
+Debug::$timer->end( true );
+```
+
+### Lorium
+
+Usage is as follows:
+
+```php
+Debug::$lorium->generate( 2 );
+```
+
+### Cmd
+
+Usage is as follows:
+
+```php
+Debug::$cmd->show_output( 'ls' );
+```
+
+### Js
+
+Usage is as follows:
+
+```php
+Debug::$js->detect_keystroke();
+```
+
+### Log
+
+Usage is as follows:
+
+```php
+Debug::$log->to_file( 'Some Data' );
+Debug::$log->to_file( ['key' => 'Some Data'] );
+Debug::$log->to_file( 'SELECT * FROM table_name', 'sql.log' );
+```
