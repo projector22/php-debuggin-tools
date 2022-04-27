@@ -1,5 +1,13 @@
 # PHP DEBUGGIN TOOLS - CHANGELOG
 
+## Version 1.0.1 - 2022-04-27
+
+### Added
+
+- Added `index.php` page to tests.
+
+---
+
 ## Version 1.0.0 - 2022-04-26
 
 ### Added
