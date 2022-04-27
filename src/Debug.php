@@ -4,6 +4,7 @@ namespace Debugger;
 
 use Debugger\Tools\Js;
 use Debugger\Tools\Cmd;
+use Debugger\Tools\Log;
 use Debugger\Tools\Lorium;
 use Debugger\Tools\Timing;
 use Debugger\Tools\DisplayData;
@@ -73,6 +74,17 @@ class Debug {
 
     public static object $js;
 
+    /**
+     * Object for using a number of logging tools.
+     * 
+     * @var object  $log
+     * 
+     * @access  public
+     * @since   1.0.1
+     */
+
+    public static object $log;
+
 
     /**
      * Constructor method, should be placed in the autoloader or called 
@@ -88,6 +100,7 @@ class Debug {
         self::$lorium  = new Lorium;
         self::$cmd     = new Cmd;
         self::$js      = new Js;
+        self::$log     = new Log;
     }
 
 }

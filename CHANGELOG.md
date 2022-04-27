@@ -1,12 +1,13 @@
 # PHP DEBUGGIN TOOLS - CHANGELOG
 
-## Version 1.0.2 - UNRELEASED
+## Version 1.0.2 - 2022-04-27
 
 ### Added
 
 - Added the following tools:
   - `Cmd`
   - `Js`
+  - `Log`
 
 ### Changed
 
