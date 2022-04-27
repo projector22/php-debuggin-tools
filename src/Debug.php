@@ -2,6 +2,8 @@
 
 namespace Debugger;
 
+use Debugger\Tools\Js;
+use Debugger\Tools\Cmd;
 use Debugger\Tools\Lorium;
 use Debugger\Tools\Timing;
 use Debugger\Tools\DisplayData;
@@ -49,6 +51,28 @@ class Debug {
 
     public static object $lorium;
 
+    /**
+     * Object for using a number of terminal tools.
+     * 
+     * @var object  $cmd
+     * 
+     * @access  public
+     * @since   1.0.1
+     */
+
+    public static object $cmd;
+
+    /**
+     * Object for using a number of javascript tools.
+     * 
+     * @var object  $js
+     * 
+     * @access  public
+     * @since   1.0.1
+     */
+
+    public static object $js;
+
 
     /**
      * Constructor method, should be placed in the autoloader or called 
@@ -59,9 +83,11 @@ class Debug {
      */
     
     public static function __constructStatic() {
-        self::$timer = new Timing;
+        self::$timer   = new Timing;
         self::$display = new DisplayData;
-        self::$lorium = new Lorium;
+        self::$lorium  = new Lorium;
+        self::$cmd     = new Cmd;
+        self::$js      = new Js;
     }
 
 }
