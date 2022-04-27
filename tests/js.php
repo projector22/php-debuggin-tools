@@ -7,4 +7,5 @@ use Debugger\Debug;
  */
 require 'common.php';
 
-Debug::$lorium->generate( 2 );
+echo "<h3>Open the console window (F12) to see detected keystrokes</h3>";
+Debug::$js->detect_keystroke();

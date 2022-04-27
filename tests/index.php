@@ -12,8 +12,11 @@
 <ol>
     <?php
     $files = scandir( __DIR__ );
+    $skip_files = [
+        '.', '..', 'index.php', 'common.php',
+    ];
     foreach( $files as $file ) {
-        if ( $file == 'index.php' || $file == '.' || $file == '..' ) {
+        if ( in_array( $file, $skip_files ) ) {
             continue;
         }
         $name = ucfirst( str_replace( '.php', '', $file ) );
