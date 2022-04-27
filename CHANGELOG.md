@@ -6,6 +6,7 @@
 
 - Added the following tools:
   - `Cmd`
+  - `Js`
 
 ### Changed
 
