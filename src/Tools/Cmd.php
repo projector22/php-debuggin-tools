@@ -7,7 +7,7 @@ namespace Debugger\Tools;
  * 
  * @author  Gareth Palmer  @evangeltheology
  * 
- * @since   1.0.1
+ * @since   1.0.2
  */
 
 class Cmd {
@@ -18,7 +18,7 @@ class Cmd {
      * @link    https://stackoverflow.com/questions/20107147/php-reading-shell-exec-live-output
      * 
      * @access  public
-     * @since   1.0.1
+     * @since   1.0.2
      */
 
     public function show_output( $cmd ) {

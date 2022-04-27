@@ -7,7 +7,7 @@ namespace Debugger\Tools;
  * 
  * @author  Gareth Palmer  @evangeltheology
  * 
- * @since   1.0.1
+ * @since   1.0.2
  */
 
 class Log {
@@ -19,7 +19,7 @@ class Log {
      * @param   string  $file   The name of the file to log to. Default: 'dev'
      * 
      * @access  public
-     * @since   1.0.1
+     * @since   1.0.2
      */
 
     public function to_file( mixed $data, string $file = 'dev' ): void {

@@ -7,7 +7,7 @@ namespace Debugger\Tools;
  * 
  * @author  Gareth Palmer  @evangeltheology
  * 
- * @since   1.0.1
+ * @since   1.0.2
  */
 
 class Js {
@@ -18,7 +18,7 @@ class Js {
      * @link    https://css-tricks.com/snippets/javascript/javascript-keycodes/
      * 
      * @access  public
-     * @since   1.0.1
+     * @since   1.0.2
      */
 
     public static function detect_keystroke() {
