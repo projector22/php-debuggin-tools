@@ -1,5 +1,13 @@
 # PHP DEBUGGIN TOOLS - CHANGELOG
 
+## Version 1.0.3 - 2022-04-27
+
+### Changed
+
+- Added Variable-length argument lists to `DisplayData->data()` method.
+
+---
+
 ## Version 1.0.2 - 2022-04-27
 
 ### Added

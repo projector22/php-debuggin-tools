@@ -15,26 +15,30 @@ class DisplayData {
     /**
      * Display data out, formatted nicely if an object or array
      * 
-     * @param   mixed   $data
+     * @param   mixed   ...$data    Parse as many bits of data to display as you like
+     * 
+     * @see     https://www.php.net/manual/en/function.var-dump.php
      * 
      * @access  public
      * @since   1.0.0
      */
 
-    public function data( mixed $data ): void {
-        if ( is_object ( $data ) ) {
-            echo "<pre>";
-            var_dump( $data );
-            echo "</pre>";
-            return;
+    public function data( mixed ...$data ): void {
+        foreach ( $data as $entry ) {
+            if ( is_object ( $entry ) ) {
+                echo "<pre>";
+                var_dump( $entry );
+                echo "</pre>";
+                return;
+            }
+            if ( is_array( $entry ) ) {
+                echo "<pre>";
+                print_r( $entry );
+                echo "</pre>";
+                return;
+            }
+            var_dump( $entry );
         }
-        if ( is_array( $data ) ) {
-            echo "<pre>";
-            print_r( $data );
-            echo "</pre>";
-            return;
-        }
-        var_dump( $data );
     }
 
 
