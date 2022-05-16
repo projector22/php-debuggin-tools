@@ -24,8 +24,16 @@ class Log {
 
     public function to_file( mixed $data, string $file = 'dev' ): void {
         $timestamp = date( 'Y-m-d G:i:s' );
-        $log_path =  realpath( __DIR__ . "/../../logs" );
-        $path = $log_path . '/' . $file . '.log';
+        if ( !str_contains( $file, '.log' ) ) {
+            $file .= '.log';
+        }
+        if ( file_exists( $file ) ) {
+            // If you name a full path to a file to log.
+            $path = $file;
+        } else {
+            $log_path =  realpath( __DIR__ . "/../../logs" );
+            $path = $log_path . '/' . $file;
+        }
 
         if ( is_array( $data ) || is_object( $data ) ) {
             $text = json_encode( $data, JSON_PRETTY_PRINT );
