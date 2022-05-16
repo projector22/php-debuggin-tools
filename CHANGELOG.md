@@ -1,5 +1,14 @@
 # PHP DEBUGGIN TOOLS - CHANGELOG
 
+## Version 1.0.4 - 2022-05-16
+
+### Changed
+
+- Auto handle if a file name parsed contains the `.log` extension.
+- Added a routine to handle full path parsing.
+
+---
+
 ## Version 1.0.3 - 2022-04-27
 
 ### Changed
