@@ -1,5 +1,13 @@
 # PHP DEBUGGIN TOOLS - CHANGELOG
 
+## Version 1.0.5 - 2022-08-30
+
+### Fixed
+
+- Fixed a bug in `DisplayData` where array and object data wasn't being displayed properly in `page_data`.
+
+---
+
 ## Version 1.0.4 - 2022-05-16
 
 ### Changed
