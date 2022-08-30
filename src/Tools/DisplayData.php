@@ -153,7 +153,13 @@ class DisplayData {
             foreach ( $entry as $key => $value ) {
                 echo "<tr>";
                 echo "<td>{$key}</td>";
-                echo "<td>{$value}</td>";
+                echo "<td>";
+                if ( is_array( $value) || is_object( $value ) ) {
+                    echo json_encode( $value, JSON_PRETTY_PRINT );
+                } else {
+                    echo $value;
+                }
+                echo "</td>";
                 echo "</tr>";
             }
             echo "</table>";
