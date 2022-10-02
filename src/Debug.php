@@ -12,7 +12,7 @@ use Debugger\Tools\DisplayData;
 /**
  * Class for providing a number of Debugging tools.
  * 
- * @author  Gareth Palmer   @evangeltheology
+ * @author  Gareth Palmer  [Github & Gitlab /projector22]
  * 
  * @version 1.0.0
  */
@@ -22,68 +22,68 @@ class Debug {
     /**
      * Object for using timing tools.
      * 
-     * @var object  $timer
+     * @var Timing  $timer
      * 
      * @access  public
      * @since   1.0.0
      */
 
-    public static object $timer;
+    public static Timing $timer;
 
     /**
      * Object for using display tools.
      * 
-     * @var object  $display
+     * @var DisplayData  $display
      * 
      * @access  public
      * @since   1.0.0
      */
 
-    public static object $display;
+    public static DisplayData $display;
 
     /**
      * Object for using a lorium generator tools.
      * 
-     * @var object  $lorium
+     * @var Lorium  $lorium
      * 
      * @access  public
      * @since   1.0.0
      */
 
-    public static object $lorium;
+    public static Lorium $lorium;
 
     /**
      * Object for using a number of terminal tools.
      * 
-     * @var object  $cmd
+     * @var Cmd  $cmd
      * 
      * @access  public
      * @since   1.0.1
      */
 
-    public static object $cmd;
+    public static Cmd $cmd;
 
     /**
      * Object for using a number of javascript tools.
      * 
-     * @var object  $js
+     * @var Js  $js
      * 
      * @access  public
      * @since   1.0.1
      */
 
-    public static object $js;
+    public static Js $js;
 
     /**
      * Object for using a number of logging tools.
      * 
-     * @var object  $log
+     * @var Log  $log
      * 
      * @access  public
      * @since   1.0.1
      */
 
-    public static object $log;
+    public static Log $log;
 
 
     /**
