@@ -7,7 +7,7 @@ use DateTime;
 /**
  * Class for providing a number of timing handling tools.
  * 
- * @author  Gareth Palmer   @evangeltheology
+ * @author  Gareth Palmer  [Github & Gitlab /projector22]
  * 
  * @since   1.0.0
  */

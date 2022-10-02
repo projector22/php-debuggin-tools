@@ -5,7 +5,7 @@ namespace Debugger\Tools;
 /**
  * A set of tools that can be called logging commands.
  * 
- * @author  Gareth Palmer  @evangeltheology
+ * @author  Gareth Palmer [Github & Gitlab /projector22]
  * 
  * @since   1.0.2
  */

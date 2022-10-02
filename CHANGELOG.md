@@ -1,5 +1,13 @@
 # PHP DEBUGGIN TOOLS - CHANGELOG
 
+## Version 1.0.6 - 2022-10-02
+
+### Changed
+
+- Changed property typing to the specific class required rather than a generic object. #7
+
+---
+
 ## Version 1.0.5 - 2022-08-30
 
 ### Fixed
