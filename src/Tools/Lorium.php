@@ -5,7 +5,7 @@ namespace Debugger\Tools;
 /**
  * Generator for creating lorium ipsum.
  * 
- * @author  Gareth Palmer  @evangeltheology
+ * @author  Gareth Palmer [Github & Gitlab /projector22]
  * 
  * @since   1.0.0
  */
