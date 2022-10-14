@@ -114,7 +114,9 @@ class DisplayData {
      */
 
     public function page_data(): void {
-        @session_start();
+        if ( session_status() == PHP_SESSION_NONE ) {
+            session_start();
+        }
         echo "<style>
     .debug_table_page_data {
         min-width: 600px;

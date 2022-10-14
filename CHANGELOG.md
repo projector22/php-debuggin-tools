@@ -1,5 +1,13 @@
 # PHP DEBUGGIN TOOLS - CHANGELOG
 
+## Version 1.0.7 - 2022-10-14
+
+### Changed
+
+- Changed how sessions are started in `DistplayData`.
+
+---
+
 ## Version 1.0.6 - 2022-10-02
 
 ### Changed
