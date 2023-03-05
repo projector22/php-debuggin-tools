@@ -4,6 +4,7 @@ namespace Debugger;
 
 use Debugger\Tools\Js;
 use Debugger\Tools\Cmd;
+use Debugger\Tools\Data;
 use Debugger\Tools\Log;
 use Debugger\Tools\Lorium;
 use Debugger\Tools\Timing;
@@ -101,6 +102,78 @@ class Debug {
         self::$cmd     = new Cmd;
         self::$js      = new Js;
         self::$log     = new Log;
+    }
+
+
+    public static function data( mixed ...$data ): Data {
+        $data_container = new Data;
+        $data_container->append_to_data_objects( $data );
+        return $data_container;
+    }
+
+
+    /**
+     * Display out data from $_GET, $_POST, $_SERVER & $_SESSION.
+     * 
+     * @access  public
+     * @since   1.0.0
+     */
+
+     public static function page_data(): void {
+        if ( session_status() == PHP_SESSION_NONE ) {
+            session_start();
+        }
+        echo <<<HTML
+<style>
+    .debug_table_page_data {
+        min-width: 600px;
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+
+    .debug_table_page_data tr td,
+    .debug_table_page_data tr th {
+        border: 1px solid black;
+    }
+    .debug_table_page_data tr:nth-child(even) {
+        background-color: lightgrey;
+    }
+    .debug_table_page_data tr:hover {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+HTML;
+        $entries = [
+            'GET'     => $_GET,
+            'POST'    => $_POST,
+            'SERVER'  => $_SERVER,
+            'SESSION' => $_SESSION,
+        ];
+        foreach ( $entries as $index => $entry ) {
+            echo "<h1>{$index}</h1>";
+            if ( count( $entry ) == 0 ) {
+                continue;
+            }
+            echo "<table class='debug_table_page_data'>";
+            echo "<tr>
+            <th>Key</th>
+            <th>Value</th>
+            </tr>";
+            foreach ( $entry as $key => $value ) {
+                echo "<tr>";
+                echo "<td>{$key}</td>";
+                echo "<td>";
+                if ( is_array( $value) || is_object( $value ) ) {
+                    echo json_encode( $value, JSON_PRETTY_PRINT );
+                } else {
+                    echo $value;
+                }
+                echo "</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        }
     }
 
 }
