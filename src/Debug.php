@@ -25,11 +25,12 @@ class Debug {
      * 
      * @var Timing  $timer
      * 
-     * @access  public
+     * @static
+     * @access  private
      * @since   1.0.0
      */
 
-    public static Timing $timer;
+    private static Timing $timer;
 
     /**
      * Object for using display tools.
@@ -93,10 +94,13 @@ class Debug {
      * 
      * @access  public
      * @since   1.0.0
+     * 
+     * @deprecated  1.1.0 - all properties should be set to private and called
+     *                      & instanciated through methods in this class.
      */
     
     public static function __constructStatic() {
-        self::$timer   = new Timing;
+        // self::$timer   = new Timing;
         self::$display = new DisplayData;
         self::$lorium  = new Lorium;
         self::$cmd     = new Cmd;
@@ -112,6 +116,14 @@ class Debug {
     }
 
 
+    public static function timer(): Timing {
+        if ( !isset( self::$timer ) ) {
+            self::$timer = new Timing;
+        }
+        return self::$timer;
+    }
+
+
     /**
      * Display out data from $_GET, $_POST, $_SERVER & $_SESSION.
      * 
@@ -119,7 +131,7 @@ class Debug {
      * @since   1.0.0
      */
 
-     public static function page_data(): void {
+    public static function page_data(): void {
         if ( session_status() == PHP_SESSION_NONE ) {
             session_start();
         }
