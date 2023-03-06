@@ -61,6 +61,7 @@ class Data {
     .debug_table tr td,
     .debug_table tr th {
         border: 1px solid black;
+        padding: 6px;
     }
     .debug_table tr:nth-child(even) {
         background-color: lightgrey;
@@ -78,8 +79,6 @@ HTML;
                 foreach ( $entry[array_key_first($entry)] as $index => $entry ) {
                     echo "<th>{$index}</th>";
                 }
-            } else {
-                
             }
             echo "</tr>";
 
