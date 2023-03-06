@@ -38,7 +38,7 @@ class Data {
     }
 
 
-        /**
+    /**
      * Table out data that may be sent, ideally in the form of an array
      * 
      * @param   array   $data   Any array, string or object
@@ -120,8 +120,30 @@ HTML;
 
     public function email(): static {
 
+        return $this;
     }
 
 
+    public function cli( ?int $count = null ): static {
+        $lb = count ( $this->data_objects ) > 1 && $count !== 1 ? '<hr>' : '';
+        $i = 0;
+        foreach ( $this->data_objects as $key => $command ) {
+            while ( @ob_end_flush() ); // end all output buffers if any
+            $proc = popen( $command, 'r' );
+            echo '<pre>';
+            while ( !feof( $proc ) ) {
+                echo fread( $proc, 4096 );
+                @flush();
+            }
+            echo '</pre>';
+            echo $lb;
+            unset( $this->data_objects[$key] );
+            $i++;
+            if ( !is_null( $count ) && $i == $count ) {
+                break;
+            }
+        }
+        return $this;
+    }
 
 }

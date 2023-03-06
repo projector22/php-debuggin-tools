@@ -43,6 +43,8 @@ class Debug {
 
     public static DisplayData $display;
 
+    private static Data $data;
+
     /**
      * Object for using a lorium generator tools.
      * 
@@ -109,12 +111,36 @@ class Debug {
     }
 
 
+    /**
+     * Generate and handle data of various kinds and returns the data object.
+     * 
+     * @param   mixed   ...$data    The data to handle.
+     * 
+     * @return  Data
+     * 
+     * @static
+     * @access  public
+     * @since   1.1.0
+     */
+
     public static function data( mixed ...$data ): Data {
-        $data_container = new Data;
-        $data_container->append_to_data_objects( $data );
-        return $data_container;
+        if ( !isset( self::$data ) ) {
+            self::$data = new Data;
+        }
+        self::$data->append_to_data_objects( $data );
+        return self::$data;
     }
 
+
+    /**
+     * Generate and return the timer object.
+     * 
+     * @return  Timing
+     * 
+     * @static
+     * @access  public
+     * @since   1.1.0
+     */
 
     public static function timer(): Timing {
         if ( !isset( self::$timer ) ) {
