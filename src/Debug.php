@@ -129,6 +129,7 @@ class Debug {
      * 
      * @access  public
      * @since   1.0.0
+     * @since   1.1.0   Moved to `src/Debug.php`
      */
 
     public static function page_data(): void {
@@ -146,6 +147,10 @@ class Debug {
     .debug_table_page_data tr td,
     .debug_table_page_data tr th {
         border: 1px solid black;
+        padding: 6px;
+    }
+    .dtpd_subkey {
+        text-align: left;
     }
     .debug_table_page_data tr:nth-child(even) {
         background-color: lightgrey;
@@ -154,17 +159,23 @@ class Debug {
         background-color: #4CAF50;
         color: white;
     }
+    .none-set {
+        margin-bottom: 25px;
+    }
 </style>
 HTML;
         $entries = [
-            'GET'     => $_GET,
-            'POST'    => $_POST,
-            'SERVER'  => $_SERVER,
-            'SESSION' => $_SESSION,
+            'GET'         => $_GET,
+            'POST'        => $_POST,
+            'SERVER'      => $_SERVER,
+            'SESSION'     => $_SESSION,
+            'ENVIRONMENT' => getenv(),
         ];
         foreach ( $entries as $index => $entry ) {
             echo "<h1>{$index}</h1>";
             if ( count( $entry ) == 0 ) {
+                echo "<small>NONE SET</small>";
+                echo "<hr class='none-set'>";
                 continue;
             }
             echo "<table class='debug_table_page_data'>";
@@ -174,7 +185,7 @@ HTML;
             </tr>";
             foreach ( $entry as $key => $value ) {
                 echo "<tr>";
-                echo "<td>{$key}</td>";
+                echo "<th class='dtpd_subkey'>{$key}</th>";
                 echo "<td>";
                 if ( is_array( $value) || is_object( $value ) ) {
                     echo json_encode( $value, JSON_PRETTY_PRINT );
@@ -185,6 +196,7 @@ HTML;
                 echo "</tr>";
             }
             echo "</table>";
+            echo "<hr>";
         }
     }
 
