@@ -28,6 +28,8 @@ class Data {
     }
 
     private function display( $data ): void {
+        // $result = highlight_string("<?php\n" . self::$_output, true);
+        // self::$_output = preg_replace('/&lt;\\?php<br \\/>/', '', $result, 1);
         echo "<pre>";
         if ( !is_array( $data ) && !is_object( $data ) ) {
             var_dump( $data );
