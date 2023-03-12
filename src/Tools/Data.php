@@ -2,17 +2,57 @@
 
 namespace Debugger\Tools;
 
+/**
+ * A set of tools that can be called to help in the development and debugging of this app.
+ * 
+ * @author  Gareth Palmer [Github & Gitlab /projector22]
+ * 
+ * @since   1.1.0
+ */
+
 class Data {
+
+    /**
+     * Array of data to handle in debugging.
+     * 
+     * @var array   $data_object
+     * 
+     * @access  private
+     * @since   1.1.0
+     */
 
     private array $data_objects = [];
 
+
+    /**
+     * Method for instanciating this class and populate the property $this->data_objects.
+     * 
+     * @param   array   $data   The data to append to `$this->data_objects`.
+     * 
+     * @return  static
+     * 
+     * @access  public
+     * @since   1.1.0
+     */
 
     public function append_to_data_objects( array $data ): static {
         $this->data_objects = array_merge( $this->data_objects, $data );
         return $this;
     }
 
-    public function dump( ?int $count = null, bool $show_type = true ): static {
+
+    /**
+     * Dump the data to the screen.
+     * 
+     * @param   int|null    $count  The number to dump. Default: null
+     * 
+     * @return  static
+     * 
+     * @access  public
+     * @since   1.1.0
+     */
+
+    public function dump( ?int $count = null ): static {
         $lb = count ( $this->data_objects ) > 1 && $count !== 1 ? '<hr>' : '';
         $i = 0;
         foreach ( $this->data_objects as $key => $entry ) {
@@ -27,29 +67,68 @@ class Data {
         return $this;
     }
 
-    private function display( $data ): void {
-        // $result = highlight_string("<?php\n" . self::$_output, true);
-        // self::$_output = preg_replace('/&lt;\\?php<br \\/>/', '', $result, 1);
-        echo "<pre>";
-        if ( !is_array( $data ) && !is_object( $data ) ) {
-            var_dump( $data );
-        } else {
-            print_r( $data );
+
+    /**
+     * To Be Build - Log to file.
+     * 
+     * @return  static
+     * 
+     * @todo    Work in some automatic pathing.
+     * 
+     * @access  public
+     * @since   1.1.0
+     */
+    
+    public function log( string $path, ?int $count = null ): static {
+        $file = fopen( $path, 'a' );
+        $i = 0;
+        foreach ( $this->data_objects as $key => $entry ) {
+            fwrite( $file, date( "Y-m-d H:i:s\t|\t" ) . $entry . "\n" );
+            $i++;
+            if ( !is_null( $count ) && $i == $count ) {
+                break;
+            }
         }
-        echo "</pre>";
+        fclose($file);
+        return $this;
+    }
+
+
+    /**
+     * Print out the parsed data to the screen.
+     * 
+     * @param   mixed   $data   The data to print.
+     * 
+     * @see https://www.php.net/manual/en/function.highlight-string.php
+     * 
+     * @access  private
+     * @since   1.1.0
+     */
+
+    private function display( mixed $data ): void {
+        if ( !is_array( $data ) && !is_object( $data ) ) {
+            echo "<pre>";
+            var_dump( $data );
+            echo "</pre>";
+        } else {
+            $highlighted = highlight_string( "<?php\n" . print_r( $data, true ), true );
+            echo preg_replace('/&lt;\\?php<br \\/>/', '', $highlighted, 1);
+        }
     }
 
 
     /**
      * Table out data that may be sent, ideally in the form of an array
      * 
-     * @param   array   $data   Any array, string or object
+     * @param   int|null    $count  The number to dump. Default: null
+     * 
+     * @return  static
      * 
      * @access  public
-     * @since   1.0.0
+     * @since   1.1.0
      */
 
-     public function table( ?int $count = null ): static {
+    public function table(  ?int $count = null ): static {
         $lb = count ( $this->data_objects ) > 1 && $count !== 1 ? '<hr>' : '';
         $i = 0;
         echo <<<HTML
@@ -113,18 +192,34 @@ HTML;
         return $this;
     }
 
-    
-    public function log(): static {
 
-        return $this;
-    }
-
+    /**
+     * To Be Build - Send as email.
+     * 
+     * @return  static
+     * 
+     * @access  public
+     * @since   1.1.0
+     */
 
     public function email(): static {
 
         return $this;
     }
 
+
+    /**
+     * Show the terminal output directly from a command.
+     * 
+     * @param   int|null    $count  The number to dump. Default: null
+     * 
+     * @return  static
+     * 
+     * @link    https://stackoverflow.com/questions/20107147/php-reading-shell-exec-live-output
+     * 
+     * @access  public
+     * @since   1.1.0
+     */
 
     public function cli( ?int $count = null ): static {
         $lb = count ( $this->data_objects ) > 1 && $count !== 1 ? '<hr>' : '';
