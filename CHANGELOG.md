@@ -1,14 +1,23 @@
 # PHP DEBUGGIN TOOLS - CHANGELOG
 
-## Version 1.1.0 - UNRELEASED
+## Version 1.1.0 - 2023-03-12
 
 ### Issues Closed
+
+## Changed
+
+- Moved `Lorium` directly into the Debug class.
+- Moved `page_data` directly into the Debug class.
+
+## Deprecated
+
+- A number of methods and accessing static properties directly.
 
 ## Added
 
 - Added `Data` method with dumping & logging routines.
 
-- #10 WIP
+- #10
 
 ---
 
