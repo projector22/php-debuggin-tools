@@ -118,7 +118,8 @@ class Timing {
      */
 
     private function show_timestamps(): void {
-        echo "<style>
+        echo <<<HTML
+<style>
     .debug_table_timer {
         width: 800px;
         border-collapse: collapse;
@@ -128,7 +129,7 @@ class Timing {
     .debug_table_timer tr td,
     .debug_table_timer tr th {
         border: 1px solid black;
-        padding: 3px;
+        padding: 6px;
     }
     .debug_table_timer tr:nth-child(even) {
         background-color: lightgrey;
@@ -137,7 +138,8 @@ class Timing {
         background-color: #4CAF50;
         color: white;
     }
-</style>";
+</style>
+HTML;
         echo "<table class='debug_table_timer'>";
         echo "<tr>
         <th>Index</th>

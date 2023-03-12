@@ -1,5 +1,17 @@
 # PHP DEBUGGIN TOOLS - CHANGELOG
 
+## Version 1.1.0 - UNRELEASED
+
+### Issues Closed
+
+## Added
+
+- Added `Data` method with dumping & logging routines.
+
+- #10 WIP
+
+---
+
 ## Version 1.0.7 - 2022-10-14
 
 ### Changed
