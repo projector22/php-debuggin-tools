@@ -2,20 +2,20 @@
 
 ## Version 1.1.0 - 2023-03-12
 
-### Issues Closed
-
-## Changed
+### Changed
 
 - Moved `Lorium` directly into the Debug class.
 - Moved `page_data` directly into the Debug class.
 
-## Deprecated
+### Deprecated
 
 - A number of methods and accessing static properties directly.
 
-## Added
+### Added
 
 - Added `Data` method with dumping & logging routines.
+
+### Issues Closed
 
 - #10
 
