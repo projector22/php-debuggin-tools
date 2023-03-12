@@ -8,6 +8,8 @@ namespace Debugger\Tools;
  * @author  Gareth Palmer [Github & Gitlab /projector22]
  * 
  * @since   1.0.0
+ * 
+ * @deprecated   1.1.0
  */
 
 class Lorium {
