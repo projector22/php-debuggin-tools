@@ -42,8 +42,32 @@ class Data {
 
 
     /**
+     * Print out the parsed data to the screen.
+     * 
+     * @param   mixed   $data   The data to print.
+     * 
+     * @see https://www.php.net/manual/en/function.highlight-string.php
+     * 
+     * @access  private
+     * @since   1.1.0
+     */
+
+     private function display( mixed $data ): void {
+        if ( !is_array( $data ) && !is_object( $data ) ) {
+            echo "<pre>";
+            var_dump( $data );
+            echo "</pre>";
+        } else {
+            $highlighted = highlight_string( "<?php\n" . print_r( $data, true ), true );
+            echo preg_replace('/&lt;\\?php<br \\/>/', '', $highlighted, 1);
+        }
+    }
+
+
+    /**
      * Dump the data to the screen.
      * 
+     * @param   bool        $kill   Whether or not to terminate execution at this point. Default: false.
      * @param   int|null    $count  The number to dump. Default: null
      * 
      * @return  static
@@ -52,7 +76,7 @@ class Data {
      * @since   1.1.0
      */
 
-    public function dump( ?int $count = null ): static {
+    public function dump( bool $kill = false, ?int $count = null ): static {
         $lb = count ( $this->data_objects ) > 1 && $count !== 1 ? '<hr>' : '';
         $i = 0;
         foreach ( $this->data_objects as $key => $entry ) {
@@ -63,6 +87,9 @@ class Data {
             if ( !is_null( $count ) && $i == $count ) {
                 break;
             }
+        }
+        if ( $kill ) {
+            die;
         }
         return $this;
     }
@@ -95,31 +122,9 @@ class Data {
 
 
     /**
-     * Print out the parsed data to the screen.
-     * 
-     * @param   mixed   $data   The data to print.
-     * 
-     * @see https://www.php.net/manual/en/function.highlight-string.php
-     * 
-     * @access  private
-     * @since   1.1.0
-     */
-
-    private function display( mixed $data ): void {
-        if ( !is_array( $data ) && !is_object( $data ) ) {
-            echo "<pre>";
-            var_dump( $data );
-            echo "</pre>";
-        } else {
-            $highlighted = highlight_string( "<?php\n" . print_r( $data, true ), true );
-            echo preg_replace('/&lt;\\?php<br \\/>/', '', $highlighted, 1);
-        }
-    }
-
-
-    /**
      * Table out data that may be sent, ideally in the form of an array
      * 
+     * @param   bool        $kill   Whether or not to terminate execution at this point. Default: false.
      * @param   int|null    $count  The number to dump. Default: null
      * 
      * @return  static
@@ -128,7 +133,7 @@ class Data {
      * @since   1.1.0
      */
 
-    public function table(  ?int $count = null ): static {
+    public function table( bool $kill = false, ?int $count = null ): static {
         $lb = count ( $this->data_objects ) > 1 && $count !== 1 ? '<hr>' : '';
         $i = 0;
         echo <<<HTML
@@ -189,6 +194,9 @@ HTML;
                 break;
             }
         }
+        if ( $kill ) {
+            die;
+        }
         return $this;
     }
 
@@ -211,6 +219,7 @@ HTML;
     /**
      * Show the terminal output directly from a command.
      * 
+     * @param   bool        $kill   Whether or not to terminate execution at this point. Default: false.
      * @param   int|null    $count  The number to dump. Default: null
      * 
      * @return  static
@@ -221,7 +230,7 @@ HTML;
      * @since   1.1.0
      */
 
-    public function cli( ?int $count = null ): static {
+    public function cli( bool $kill = false, ?int $count = null ): static {
         $lb = count ( $this->data_objects ) > 1 && $count !== 1 ? '<hr>' : '';
         $i = 0;
         foreach ( $this->data_objects as $key => $command ) {
@@ -239,6 +248,9 @@ HTML;
             if ( !is_null( $count ) && $i == $count ) {
                 break;
             }
+        }
+        if ( $kill ) {
+            die;
         }
         return $this;
     }

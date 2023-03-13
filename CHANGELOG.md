@@ -1,5 +1,13 @@
 # PHP DEBUGGIN TOOLS - CHANGELOG
 
+## Version 1.1.1 - 2023-03-13
+
+### Changed
+
+- Added a kill switch to a number of Data display methods.
+
+---
+
 ## Version 1.1.0 - 2023-03-12
 
 ### Changed
